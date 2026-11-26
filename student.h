@@ -20,6 +20,17 @@
 #define PURPLE  "\033[38;5;129m"
 #define GOLD    "\033[38;5;220m"
 #define TEAL    "\033[38;5;37m"
+#define ITALIC "\033[3m"
+#define BLINK  "\033[5m"
+#define RESET  "\033[0m"
+#define LAVENDER      "\033[38;2;200;162;200m"
+#define SKY_BLUE      "\033[38;2;135;206;235m"
+#define LIME          "\033[38;2;50;205;50m"
+#define BROWN         "\033[38;2;165;42;42m"
+#define SILVER        "\033[38;2;192;192;192m"
+
+
+
 
 typedef struct student
 {

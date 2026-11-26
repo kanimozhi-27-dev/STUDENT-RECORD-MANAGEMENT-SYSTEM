@@ -9,7 +9,7 @@ void stud_show(SLL *ptr)
         int c=stud_count(ptr);
         printf("count=%d\n",c);
 	printf("-----------------------------------------------------\n");
-	printf("Roll No.  Name  Percentage\n");
+	printf("Roll No. Name Percentage\n");
 	printf("-----------------------------------------------------\n");
         while(ptr)
         {

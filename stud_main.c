@@ -5,9 +5,9 @@ int main()
 	char op;
 	while(1)
 	{
-		printf(BOLD PINK"********STUDENT RECORD MENU ********\n" RST);
-		printf(" a/A : Add new record\n d/D : Delete a record\n s/S : Show the list\n m/M : Modify a record\n v/V : Save records\n e/E : Exit\n t/T : Sort the list\n l/L : Delete all the records\n r/R : Reverse the list\n");
-		printf("Enter your choice:\n");
+		printf(BOLD CYAN"********STUDENT RECORD MENU ********\n" RST);
+		printf(ITALIC" a/A : Add new record\n d/D : Delete a record\n s/S : Show the list\n m/M : Modify a record\n v/V : Save records\n e/E : Exit\n t/T : Sort the list\n l/L : Delete all the records\n r/R : Reverse the list\n"RST);
+		printf(BOLD ITALIC"Enter your choice:\n"RST);
 		scanf(" %c", &op);
 		op=tolower(op);
 		switch(op)
@@ -21,7 +21,7 @@ int main()
 			case 't' : stud_sort(headptr);break;
 			case 'l' : stud_delNode(&headptr);break;
 			case 'r' : stud_reverse(&headptr);break;
-			default  : printf("Invalid option!\n"); 
+			default  : printf(BOLD RED"Invalid option!\n"RST); 
 		}
 	}
 	return 0;
@@ -45,7 +45,7 @@ void stud_sort(SLL *ptr)
 {
 	if(ptr==0)
 	{
-		printf("No students records available\n");
+		printf(BOLD RED"No students records available\n"RST);
 		return;
 	}
 
@@ -53,8 +53,8 @@ void stud_sort(SLL *ptr)
 	SLL *p1=ptr,*p2,t;
 	char name[50],op;
 	float percent;
-	printf("N/n : Sort with name\n");
-	printf("P/p : Sort with percentage\n");
+	printf(BOLD LAVENDER"N/n : Sort with name\n"RST);
+	printf(BOLD LAVENDER"P/p : Sort with percentage\n"RST);
 	scanf(" %c", &op);
 
 	if(op=='n')
@@ -117,7 +117,7 @@ void stud_delNode(SLL **ptr)
 {
 	if(*ptr==0)
 	{
-		printf("No student records found\n");
+		printf(BOLD RED"No student records found\n"RST);
 		return;
 	}
 	int c=1;
@@ -130,7 +130,7 @@ void stud_delNode(SLL **ptr)
 		free(del);
 		del=*ptr;
 	}
-	printf("All students records are deleted successfully\n");
+	printf(BOLD ITALIC GREEN"All students records are deleted successfully\n"RST);
 
 }
 
@@ -138,7 +138,7 @@ void stud_reverse(SLL **ptr)
 {
 	if(*ptr==0)
 	{
-		printf("No students records are found\n");
+		printf(BOLD RED"No students records are found\n"RST);
 		return;
 	}
 
@@ -165,8 +165,8 @@ void stud_exit(SLL *ptr)
 {
 	char op;
 	SLL *temp;
-	printf("S/s : Save and exit\n");
-	printf("E/e : Exit without saving\n");
+	printf(BOLD LAVENDER"S/s : Save and exit\n"RST);
+	printf(BOLD LAVENDER"E/e : Exit without saving\n"RST);
 	scanf(" %c", &op);
 	op=tolower(op);
 	if(op=='s')

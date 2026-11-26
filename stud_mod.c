@@ -31,11 +31,11 @@ void stud_mod(SLL **ptr)
                                 printf("%d %s %f\n",search->rollno,search->name,search->percentage);
                         printf("Enter the updated name and percentage\n");
                         scanf("%s %f", search->name,&search->percentage);
-                        break;
+                       // break;
                         }
                         search=search->next;
                 }
-                //free(search);
+		printf("roll number not found\n");
         }
 
         else if(op=='n')
@@ -47,23 +47,33 @@ void stud_mod(SLL **ptr)
                         if(strcmp(name,search->name)==0)
                         {
                                 c++;
+				roll=search->rollno;
                                 printf("%d %s %f\n",search->rollno,search->name,search->percentage);
                         }
                         search=search->next;
                 }
-                search=*ptr;
+
                 if(c<1)
                         {
-                                printf("Enter the updated name and percentage\n");
-                                scanf("%s %f",search->name,&search->percentage);
+				printf("Name not found\n");
+				return;
                         }
                 if(c>=1)
                 {
                         printf("Enter the roll number to modify the record\n");
-                        scanf("%d",&search->rollno);
-                        printf("Enter the updated name\n");
-                        scanf("%s",search->name);
+                        scanf("%d",&roll);
                 }
+		search=*ptr;
+		while(search)
+		{
+			if(search->rollno==roll)
+			{
+				printf("ENter the updated name and percentage\n");
+				scanf("%s %f",search->name,&search->percentage);
+			}
+			search=search->next;
+		}
+		printf("roll number not dound\n");
 
 
         }
@@ -72,31 +82,39 @@ void stud_mod(SLL **ptr)
         {
                 c=0;
                 search=*ptr;
-                printf("Enter the percentage to search from 1.00 to 100.00:\n");
+                printf("Enter the percentage to search:\n");
                 scanf("%2f",&percent);
                 while(search)
                 {
                         if(search->percentage == percent)
                         {
                                 c++;
+				roll=search->rollno;
                                 printf("%d %s %f\n",search->rollno,search->name,search->percentage);
                         }
                         search=search->next;
                 }
-                search=*ptr;
 		if(c<1)
                 {
-                        printf("Enter the updated name and percentage\n");
-                        scanf("%s %f",search->name,&search->percentage);
-                }
-                if(c>=1)
+			printf("percentage record not found\n");
+			return;			
+		}
+                if(c>1)
                 {
                         printf("Enter the roll number to modify the record\n");
-                        scanf("%d",&search->rollno);
-                        printf("Enter the updated  percentage\n");
-                        scanf("%f", &search->percentage);
-                }
-
+                        scanf("%d",&roll);
+               	}
+		search=*ptr;
+		while(search)
+		{
+			if(search->rollno==roll)
+			{
+				printf("Enter the updated percentage\n");
+				scanf("%f",&search->percentage);
+			}
+			search=search->next;
+		}
+		printf("Percentage not found\n");
         }
 }
 
