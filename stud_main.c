@@ -2,6 +2,7 @@
 int main()
 {
 	SLL *headptr=0;
+	load_file(&headptr);
 	char op;
 	while(1)
 	{
@@ -15,7 +16,7 @@ int main()
 			case 'a' : stud_add(&headptr);break;
 			case 'd' : stud_del(&headptr);break;
 			case 's' : stud_show(headptr);break;
-			case 'm' : stud_mod(&headptr);break;
+			case 'm' : stud_mod(headptr);break;
 			case 'v' : stud_save(headptr);break;
 			case 'e' : stud_exit(headptr);break;
 			case 't' : stud_sort(headptr);break;
@@ -185,4 +186,47 @@ void stud_exit(SLL *ptr)
 	{
 		exit(0);
 	}
+}
+
+void load_file(SLL **ptr)
+{
+
+	FILE  *fp=fopen("student.dat","r");
+	if(fp==0)
+	{
+		return;
+	}
+
+	SLL *new=*ptr;
+	while(1)
+	{
+		new=malloc(sizeof(SLL));
+                if(new==0)
+                {
+                        break;
+                }
+
+		if((fscanf(fp,"%d %s %f",&new->rollno,new->name,&new->percentage))!=3)
+		{
+                        free(new);
+			break;
+		}
+		else
+		{
+			new->next=0;
+			if(*ptr==0)
+			{
+				*ptr=new;
+			}
+			else
+			{
+				SLL *last=*ptr;
+				while(last->next)
+					last=last->next;
+
+				last->next=new;
+			}
+		}
+	}
+        fclose(fp);
 }

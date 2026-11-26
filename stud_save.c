@@ -10,7 +10,7 @@ void stud_save(SLL *ptr)
         fp=fopen("student.dat","w");
         while(ptr)
         {
-                fprintf(fp,"%d %s %f",ptr->rollno,ptr->name,ptr->percentage);
+                fprintf(fp,"%d %s %f\n",ptr->rollno,ptr->name,ptr->percentage);
                 ptr=ptr->next;
         }
         printf("Student data saved successfully\n");
